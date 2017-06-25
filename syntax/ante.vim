@@ -21,12 +21,12 @@ syn keyword anKeywords if elif else import mut with
 syn keyword anKeywords for in do while let export
 syn keyword anKeywords continue break return this is
 syn keyword anKeywords ext new match trait module ante
-syn keyword anKeywords enum type where when fun var
-syn keyword anKeywords infect and or xor not then do
+syn keyword anKeywords type where when fun var
+syn keyword anKeywords and or xor not then do global
 
 syn keyword anMods pub pro pri const raw noinit
 
-syn match funcDef  '\(fun\)\@<= .\+\(:\@=\)' contains=anKeywords,anType
+syn match funcDef  '\(fun\)\@<= .\+\(:\@=\)' contains=anKeywords,anType,anOp
 " syn match funcCall '\w\@<!\w\+\((\@=\)' contains=anKeywords
 syn match funcCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( *\(do\|ante\|then\|and\|or\|with\)\@!\)\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match funcCall '\(\(and\|or\|not\|then\|match\|while\|if\|elif\|else\|import\|for\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'"\[]\| \+\w\)\@=\)\( \+\(do\|then\|with\|and\|or\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
@@ -42,10 +42,10 @@ syn region interpolation start='\${' end='}' contains=comment,mlcmt,funcCall,str
 syn match charLiteral '\'.\''
 syn match charLiteral '\'\\.\''
 
-syn match integerLiteral '\([A-Za-z0-9]\@<!\)[0-9_]\+\([ui]\(8\|16\|32\|64\)\)\?'
-syn match integerLiteral '\([A-Za-z0-9]\@<!\)0b[01_]\+\([ui]\(8\|16\|32\|64\)\)\?'
-syn match integerLiteral '\([A-Za-z0-9]\@<!\)0o[0-7_]\+\([ui]\(8\|16\|32\|64\)\)\?'
-syn match integerLiteral '\([A-Za-z0-9]\@<!\)0x[0-9A-Fa-f_]\+\([ui]\(8\|16\|32\|64\)\)\?'
+syn match integerLiteral '\([A-Za-z0-9]\@<!\)[0-9_]\+\([ui]\(8\|16\|32\|64\|sz\)\)\?'
+syn match integerLiteral '\([A-Za-z0-9]\@<!\)0b[01_]\+\([ui]\(8\|16\|32\|64\|sz\)\)\?'
+syn match integerLiteral '\([A-Za-z0-9]\@<!\)0o[0-7_]\+\([ui]\(8\|16\|32\|64\|sz\)\)\?'
+syn match integerLiteral '\([A-Za-z0-9]\@<!\)0x[0-9A-Fa-f_]\+\([ui]\(8\|16\|32\|64\|sz\)\)\?'
 
 syn match doubleLiteral '\([A-Za-z0-9]\@<!\)\d\+\.\d*\(f\(16\|32\|64\)\)\?'
 
