@@ -2,27 +2,29 @@ syn keyword notes contained TODO FIXME XXX NOTE
 
 syn keyword anBool true false
 
-syn keyword anType i8 i16 i32 i64
+syn keyword anType i8 i16 i32 i64 ref
 syn keyword anType u8 u16 u32 u64
 syn keyword anType f16 f32 f64 isz usz
 syn keyword anType c8 c32 void bool
 syn match anType '\w\@<![A-Z]\w*'
 
-syn match anOp '[+\-\*/%#@&=<>|!:]'
+syn match anOp '[+^\-\*/%#@&=<>|!:]'
 
 
 syn match comment '//.*$' contains=notes,mlcmt
 syn region mlcmt start='/\*' end='\*/' contains=notes
 syn region preproc start='!\[' end=']' contains=comment,mlcmt,funcCall,stringLiteral,charLiteral,integerLiteral,doubleLiteral,anType
 
-syn match anType '\'[a-z]\w*'
+syn match preproc '![a-z_]\w*'
+
+syn match anType '\'[a-z_]\w*'
 
 syn keyword anKeywords if elif else import mut with
 syn keyword anKeywords for in do while let export
 syn keyword anKeywords continue break return this is
 syn keyword anKeywords ext new match trait module ante
-syn keyword anKeywords type where when fun var
-syn keyword anKeywords and or xor not then do global
+syn keyword anKeywords type where when fun block
+syn keyword anKeywords and or not then do global
 
 syn keyword anMods pub pro pri const raw noinit
 
