@@ -19,14 +19,14 @@ syn match preproc '![a-z_]\w*'
 
 syn match anType '\'[a-z_]\w*'
 
-syn keyword anKeywords if elif else import mut with
-syn keyword anKeywords for in do while let export
-syn keyword anKeywords continue break return this is
-syn keyword anKeywords ext new match trait module ante
+syn keyword anKeywords if elif else import with
+syn keyword anKeywords for in do while continue
+syn keyword anKeywords break return this is isnt
+syn keyword anKeywords ext new match trait module
 syn keyword anKeywords type where when fun block
-syn keyword anKeywords and or not then do global
+syn keyword anKeywords and or not then do
 
-syn keyword anMods pub pro pri const raw noinit
+syn keyword anMods pub pro pri const ante let mut global
 
 syn match funcDef  '\(fun\)\@<= .\+\(:\@=\)' contains=anKeywords,anType,anOp
 " syn match funcCall '\w\@<!\w\+\((\@=\)' contains=anKeywords
