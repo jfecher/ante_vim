@@ -22,21 +22,21 @@ syn match anType '\'[a-z_]\w*'
 
 syn match anModule '\<[A-Z]\w*\.'
 
-syn keyword anKeywords if elif else import with cond
-syn keyword anKeywords for in do while continue try
-syn keyword anKeywords break return is isnt fn opaque
+syn keyword anKeywords if elif else import with
+syn keyword anKeywords in do recur given resume
+syn keyword anKeywords return fn opaque where derive forward
 syn keyword anKeywords impl match trait module
-syn keyword anKeywords type where block and ante
-syn keyword anKeywords or not then do as given move
+syn keyword anKeywords type and loop can effect handle
+syn keyword anKeywords or not then do via impls
 
 syn keyword anModifiers mut extern
 
-" syn match anFnCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-" syn match anFnCall '\(\(and\|or\|not\|then\|match\|while\|if\|elif\|else\|import\|for\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'"\[]\| \+\w\)\@=\)\( \+\(do\|mut\|then\|with\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-" syn match anFnCall '\(\(|>\) *\)\@<=[a-z]\w*' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-" syn match anFnCall '[a-z]\w*\(\( *<|\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-" syn match anFnCall '[a-z]\w*\(\( *{\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-" syn match anFnCall '\\\w\+' contains=anOp
+syn match anFnCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '\(\(and\|or\|not\|then\|match\|if\|elif\|else\|import\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'"\[]\| \+\w\)\@=\)\( \+\(do\|mut\|then\|with\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '\(\(|>\) *\)\@<=[a-z]\w*' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '[a-z]\w*\(\( *<|\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '[a-z]\w*\(\( *{\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '\\\w\+' contains=anOp
 
 syn region stringLiteral start='"' end='"' contains=interpolation
 
@@ -52,7 +52,7 @@ syn match integerLiteral '\([A-Za-z0-9]\@<!\)0b[01_]\+\([ui]\(8\|16\|32\|64\|sz\
 syn match integerLiteral '\([A-Za-z0-9]\@<!\)0o[0-7_]\+\([ui]\(8\|16\|32\|64\|sz\)\)\?'
 syn match integerLiteral '\([A-Za-z0-9]\@<!\)0x[0-9A-Fa-f_]\+\([ui]\(8\|16\|32\|64\|sz\)\)\?'
 
-syn match doubleLiteral '\([A-Za-z0-9]\@<!\)\d\+\.\d*\(f\(16\|32\|64\)\)\?'
+syn match doubleLiteral '\([A-Za-z0-9]\@<!\)\d\+\.\d*\(f\(16\|32\|64\|\)\)\?'
 
 
 let b:current_syntax = "an"
