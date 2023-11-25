@@ -2,10 +2,6 @@ syn keyword notes contained TODO FIXME XXX NOTE
 
 syn keyword anBool true false
 
-syn keyword anType i8 i16 i32 i64 ref
-syn keyword anType u8 u16 u32 u64
-syn keyword anType f16 f32 f64 isz usz
-syn keyword anType char unit bool string
 syn match anType '\w\@<![A-Z]\w*'
 
 syn match anOp '[+^\-\*/%#@&=<>|!?]'
