@@ -4,7 +4,7 @@ syn keyword anBool true false
 
 syn match anType '\w\@<![A-Z]\w*'
 
-syn match anOp '[+^\-\*/%#@&=<>|!?]'
+syn match anOp '[+^\-*/%@=<>|?]'
 syn match anOp ':='
 
 syn match comment '//.*$' contains=notes,mlcmt
@@ -19,19 +19,24 @@ syn match anModule '\<[A-Z]\w*\.'
 syn keyword anKeywords if elif else import with
 syn keyword anKeywords in do recur given resume
 syn keyword anKeywords return fn opaque where derive forward
-syn keyword anKeywords impl match trait module boxed
+syn keyword anKeywords impl match trait module for while
 syn keyword anKeywords type and loop can effect handle
 syn keyword anKeywords or not then do via methods comptime
 
+"syn match anModifiers '[&!]'
 syn keyword anModifiers mut extern
 syn keyword anModifiers own owned ref shared
 
-syn match anFnCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+"syn match anModule '\\'
+"syn match anModule '#'
+
+syn match anFnCall '\([)\]"\'A-Za-z_.!&0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '\(\(and\|or\|not\|then\|match\|if\|elif\|else\|import\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'"\[]\| \+\w\)\@=\)\( \+\(do\|mut\|then\|with\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '\(\(|>\) *\)\@<=[a-z]\w*' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '[a-z]\w*\(\( *<|\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '[a-z]\w*\(\( *{\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-syn match anFnCall '\\\w\+' contains=anOp
+syn match anFnCall '\\\@<=\w\+' contains=anOp
+syn match anFnCall '\w\+(\@=' contains=anOp,anType
 
 syn region stringLiteral start='"' end='"' contains=interpolation
 
@@ -59,7 +64,7 @@ hi def link preproc        PreProc
 hi def link quote          PreProc
 hi def link anOp           Keyword
 hi def link anKeywords     Keyword
-hi def link anModifiers    Keyword
+hi def link anModifiers    Keyword "StorageClass
 hi def link anBool         Boolean
 hi def link funcDef        Function
 hi def link anFnCall       Function
