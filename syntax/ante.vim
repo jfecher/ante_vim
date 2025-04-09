@@ -9,27 +9,24 @@ syn match anOp ':='
 
 syn match comment '//.*$' contains=notes,mlcmt
 syn region mlcmt start='/\*' end='\*/' contains=notes
-syn region preproc start='!\[' end=']' contains=comment,mlcmt,anFnCall,stringLiteral,charLiteral,integerLiteral,doubleLiteral,anType
 syn region quote start='`' end='`' contains=comment,mlcmt,anFnCall,stringLiteral,charLiteral,integerLiteral,doubleLiteral,anType,anOp,anKeywords
-
-syn match preproc '![a-z_]\w*'
 
 syn match anType '\'[a-z_]\w*'
 
 syn match anModule '\<[A-Z]\w*\.'
 
 syn keyword anKeywords if elif else import with
-syn keyword anKeywords in do recur given resume
+syn keyword anKeywords in do recur given resume pure
 syn keyword anKeywords return fn opaque where derive forward
-syn keyword anKeywords impl match trait module
+syn keyword anKeywords impl match trait module for while acc
 syn keyword anKeywords type and loop can effect handle
-syn keyword anKeywords or not then do via
+syn keyword anKeywords or not then do via boxed
 
 syn keyword anModifiers mut extern
-syn keyword anModifiers own ref shared
+syn keyword anModifiers own owned ref shared
 
 syn match anFnCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-syn match anFnCall '\(\(and\|or\|not\|then\|match\|if\|elif\|else\|import\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'"\[]\| \+\w\)\@=\)\( \+\(do\|mut\|then\|with\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '\(\(and\|or\|not\|then\|match\|if\|elif\|else\|import\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'!&"\[]\| \+\w\)\@=\)\( \+\(do\|mut\|then\|with\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '\(\(|>\) *\)\@<=[a-z]\w*' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '[a-z]\w*\(\( *<|\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '[a-z]\w*\(\( *{\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
