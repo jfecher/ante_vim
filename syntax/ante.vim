@@ -18,9 +18,9 @@ syn match anModule '\<[A-Z]\w*\.'
 syn keyword anKeywords if elif else import with
 syn keyword anKeywords in do recur given resume pure
 syn keyword anKeywords return fn opaque where derive forward
-syn keyword anKeywords impl match trait module for while acc
+syn keyword anKeywords impl match trait module boxed
 syn keyword anKeywords type and loop can effect handle
-syn keyword anKeywords or not then do via boxed
+syn keyword anKeywords or not then do via methods comptime
 
 syn keyword anModifiers mut extern
 syn keyword anModifiers own owned ref shared
