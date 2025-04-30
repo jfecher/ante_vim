@@ -15,7 +15,7 @@ syn match anType '\'[a-z_]\w*'
 
 syn match anModule '\<[A-Z]\w*\.'
 
-syn keyword anKeywords if elif else import with
+syn keyword anKeywords if elif else import with is
 syn keyword anKeywords in do recur given resume pure
 syn keyword anKeywords return fn opaque where derive forward
 syn keyword anKeywords impl match trait module for while
@@ -25,8 +25,8 @@ syn keyword anKeywords or not then do via methods comptime
 syn keyword anModifiers mut extern
 syn keyword anModifiers own owned ref shared
 
-syn match anFnCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|can\|pure\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
-syn match anFnCall '\(\(and\|or\|not\|then\|match\|if\|elif\|else\|import\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'!&"\[]\| \+\w\)\@=\)\( \+\(do\|can\|pure\|mut\|then\|with\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '\([)\]"\'A-Za-z_0-9] *\)\@<![a-z]\w*\(\(\( *[(\'"\[]\)\|\( \+\w\)\)\@=\)\( \+\(do\|mut\|ante\|then\|can\|pure\|is\|and\|or\|\\\|with\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
+syn match anFnCall '\(\(and\|or\|is\|not\|then\|match\|if\|elif\|else\|import\|in\|do\|then\|export\|return\|new\|match\|xor\|mut\|ante\) \+\)\@<=[a-z]\w*\(\( *[(\'!&"\[]\| \+\w\)\@=\)\( \+\(do\|can\|pure\|mut\|then\|with\|is\|and\|or\|\\\|in\)\@!\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '\(\(|>\) *\)\@<=[a-z]\w*' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '[a-z]\w*\(\( *<|\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
 syn match anFnCall '[a-z]\w*\(\( *{\)\@=\)' contains=stringLiteral,charLiteral,anType,integerLiteral,doubleLiteral,anOp
